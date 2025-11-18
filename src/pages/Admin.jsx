@@ -158,12 +158,22 @@ function Admin() {
           <div className="form-group">
             <input type="file" accept="image/*,video/*" onChange={(e) => setFile(e.target.files[0])} required />
           </div>
+          <div className="form-group" style={{ marginTop: '10px' }}>
+            <input
+              type="text"
+              placeholder="Ou créer une nouvelle catégorie"
+              onChange={(e) => setCategory(e.target.value)}
+              className="form-input"
+              style={{ fontStyle: 'italic', color: '#888' }}
+            />
+          </div>
           <div className="form-group">
-            <select value={category} onChange={(e) => setCategory(e.target.value)} className="form-input" required>
+            <select value={category} onChange={(e) => setCategory(e.target.value)} className="form-input" >
               <option value="">Choisir catégorie</option>
               {categories.map(cat => <option key={cat} value={cat}>{cat}</option>)}
             </select>
           </div>
+
           <div className="form-group">
             <input type="text" placeholder="Légende" value={caption} onChange={(e) => setCaption(e.target.value)} className="form-input" />
           </div>
