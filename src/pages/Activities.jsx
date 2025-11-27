@@ -1,108 +1,86 @@
-import React, { useEffect } from 'react';
-import Header from '../Header.jsx';
-import '../App.css';
+import React from 'react';
+import { useSiteTexts } from '../hooks/useSiteTexts.js';
+
+const program = [
+  {
+    title: 'Ateliers créatifs',
+    description: 'Peinture, modelage, collage et découverte sensorielle pour affiner la motricité et l’expression.',
+    media: { type: 'image', src: '/img/fille-creatife.jpg', alt: 'Atelier créatif' },
+    chip: '🎨 Arts visuels',
+  },
+  {
+    title: 'Explorations musicales',
+    description: 'Chants, percussions douces et écoute active pour éveiller le rythme et la coordination.',
+    media: { type: 'image', src: '/img/activite-musical.jpg', alt: 'Musique' },
+    chip: '🎵 Musique',
+  },
+  {
+    title: 'Jeux éducatifs',
+    description: 'Puzzles, jeux de logique, conte et mathématiques ludiques pour développer la concentration.',
+    media: { type: 'image', src: '/img/jeu-educatif.jpg', alt: 'Jeux éducatifs' },
+    chip: '🧩 Cognitif',
+  },
+  {
+    title: 'Sorties découvertes',
+    description: 'Parcs, musées, fermes pédagogiques et actions solidaires ancrent les apprentissages dans le réel.',
+    media: { type: 'image', src: '/img/jeu.jpg', alt: 'Sorties' },
+    chip: '🌿 Culture & nature',
+  },
+  {
+    title: 'Éveil psychomoteur',
+    description: 'Parcours moteurs, yoga enfant et jeux coopératifs pour développer l’équilibre et la confiance.',
+    media: { type: 'video', src: '/vid/psychomoteur.mp4', alt: 'Psychomotricité' },
+    chip: '⚽ Mouvement',
+  },
+  {
+    title: 'Cuisine & sciences',
+    description: 'Recettes, expériences sensorielles et mini-labos STEAM pour nourrir curiosité et autonomie.',
+    media: { type: 'image', src: '/img/educatif.jpg', alt: 'Cuisine' },
+    chip: '👩‍🍳 Expériences',
+  },
+];
 
 function Activities() {
-  useEffect(() => {
-  document.querySelector('.fade-in-section')?.classList.add('loaded');
-  }, []);
+  const { texts } = useSiteTexts(['activities.sectionTitle', 'activities.sectionSubtitle']);
+
   return (
-    <div className="app">
-      
-      <main className="fade-in-section">
-        <section className="activities-section">
-          <h1 className="activities-title">Nos activités pédagogiques et ludiques</h1>
-            <div className="activities-cards">
+    <div className="mx-auto flex w-full max-w-6xl flex-col gap-10 px-6 py-12">
+      <section className="rounded-[32px] bg-white/90 p-10 shadow-2xl shadow-slate-100">
+        <p className="text-sm font-semibold uppercase tracking-[0.3em] text-slate-500">
+          {texts['activities.sectionTitle']}
+        </p>
+        <h1 className="mt-4 text-4xl font-semibold text-slate-900">Une semaine rythmée et joyeuse</h1>
+        <p className="mt-6 text-lg text-slate-600">{texts['activities.sectionSubtitle']}</p>
+      </section>
 
-              {/* Ateliers créatifs */}
-              <div className="activity-card" style={{ backgroundColor: '#A8E6CF' }}>
-                <details>
-                  <summary>🎨 Ateliers créatifs</summary>
-                  <p>Peinture, dessin et pâte à modeler pour stimuler imagination et motricité fine.</p>
-                  <p>Ces activités développent l’expression personnelle et la découverte des couleurs et formes.</p>
-                  <img src="/img/fille-creatife.jpg" alt="Atelier créatif" className="gallery-image" />
-                </details>
-              </div>
-
-              {/* Activités musicales */}
-              <div className="activity-card" style={{ backgroundColor: '#AECBFA' }}>
-                <details>
-                  <summary>🎵 Activités musicales</summary>
-                  <p>Chants et instruments pour éveiller le sens du rythme et la joie de la musique.</p>
-                  <p>Ces ateliers favorisent la créativité, la coordination et l’écoute collective.</p>
-                  <img src="/img/activite-musical.jpg" alt="Activité musicale" className="gallery-image" />
-                </details>
-              </div>
-
-              {/* Jeux éducatifs */}
-              <div className="activity-card" style={{ backgroundColor: '#FFD3B6' }}>
-                <details>
-                  <summary>🧩 Jeux éducatifs</summary>
-                  <p>Puzzles, jeux de mémoire et activités de logique pour encourager la réflexion.</p>
-                  <p>Ces jeux stimulent la concentration, l’esprit d’équipe et la résolution de problèmes.</p>
-                  <img src="/img/jeu-educatif.jpg" alt="Jeux éducatifs" className="gallery-image" />
-                </details>
-              </div>
-
-              {/* Sorties pédagogiques */}
-              <div className="activity-card" style={{ backgroundColor: '#FFAAA5' }}>
-                <details>
-                  <summary>🌳 Sorties pédagogiques</summary>
-                  <p>Visites dans des parcs et musées pour découvrir le monde de façon ludique.</p>
-                  <p>Ces sorties développent l’observation, la curiosité et l’esprit d’initiative des enfants.</p>
-                  <img src="/img/jeu.jpg" alt="Sorties pédagogiques" className="gallery-image" />
-                </details>
-              </div>
-
-              {/* Éveil psychomoteur */}
-              <div className="activity-card" style={{ backgroundColor: '#A8E6CF' }}>
-                <details>
-                  <summary>⚽ Éveil psychomoteur</summary>
-                  <p>Jeux sportifs pour développer motricité, équilibre et coordination.</p>
-                  <p>Parcours, mini-jeux collectifs et exercices favorisent l’autonomie et le travail en groupe.</p>
-                  <video src="/vid/psychomoteur.mp4" className="gallery-image" autoPlay loop muted playsInline />
-              </details>
-              </div>
-
-              {/* Jeux de cuisine */}
-              <div className="activity-card" style={{ backgroundColor: '#b0dbf4ff' }}>
-                <details>
-                  <summary>👩‍🍳 Jeux de cuisine</summary>
-                  <p>Ateliers culinaires pour manipuler les ingrédients et suivre des recettes simples.</p>
-                  <p>Ces activités développent motricité fine, créativité et autonomie tout en sensibilisant à l’alimentation saine.</p>
-                  <img src="/img/educatif.jpg" alt="Jeux de cuisine" className="gallery-image" />
-                </details>
-              </div>
-
+      <section className="grid gap-8 rounded-[32px] bg-gradient-to-br from-sky-50 via-white to-emerald-50 p-8 md:grid-cols-2">
+        {program.map((item) => (
+          <article key={item.title} className="rounded-[28px] border border-white/60 bg-white/80 p-6 shadow-lg shadow-slate-100">
+            <span className="inline-flex items-center rounded-full bg-slate-900/5 px-4 py-1 text-xs font-semibold uppercase tracking-wide text-slate-500">
+              {item.chip}
+            </span>
+            <h3 className="mt-4 text-2xl font-semibold text-slate-900">{item.title}</h3>
+            <p className="mt-3 text-slate-600">{item.description}</p>
+            <div className="mt-6 overflow-hidden rounded-2xl">
+              {item.media.type === 'video' ? (
+                <video
+                  src={item.media.src}
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="h-64 w-full object-cover"
+                />
+              ) : (
+                <img src={item.media.src} alt={item.media.alt} className="h-64 w-full object-cover" loading="lazy" />
+              )}
             </div>
-
-        </section>
-      </main>
-
-        <footer className="contact-footer">
-          <div className="footer-content">
-            <div className="footer-info">
-              <p>Adresse : 2 rue mohamed fadhel ben achour sidi daoud la Marsa</p>
-              <p>Téléphone : +216 97 843 193 </p>
-              <p>Email : dorsaf.karbech@gmail.com</p>
-
-              {/* Ici aussi ça marche */}
-              <p className="facebook-info">
-                Voulez-vous plus d’informations ? 
-                Consultez notre page Facebook :{" "}
-                <a 
-                  href="https://www.facebook.com/JardinLesAnges/?locale=fr_FR" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                >
-                  Jardin et garderie scolaire les anges
-                </a>
-              </p>
-            </div>
-          </div>
-        </footer>
+          </article>
+        ))}
+      </section>
     </div>
   );
 }
 
 export default Activities;
+
